@@ -711,7 +711,7 @@ The speed tracking and stride measures show that all three controllers successfu
 
 These results establish that the subsequent comparisons are performed among controllers that all accomplish the locomotion task, rather than between successful and failed walking trials. The stride measures further reveal different gait strategies. E2E-RL tends to use shorter and faster steps at lower walking speeds, whereas DEP-RL and Residual-Reflex RL adopt longer strides. The following analyses therefore investigate whether successful task execution is also accompanied by human-like kinematics, dynamic consistency, and gait consistency.
 
-\begin{table}[!t]
+\begin{table*}[!t]
 \centering
 \caption{Speed tracking and stride measures from the analyzed walking
 trajectories. Speed error is the absolute difference between realized and target
@@ -720,7 +720,6 @@ speed.}
 \small
 \setlength{\tabcolsep}{3.5pt}
 \renewcommand{\arraystretch}{1.12}
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{c l r r r r r}
 \toprule
 \makecell{\textbf{Target}\\\textbf{speed}} & \textbf{Method} & \makecell{\textbf{Realized}\\\textbf{speed}} & \textbf{Error} & \textbf{Stride len.} & \textbf{Stride time} & \textbf{Cycles} \\
@@ -737,9 +736,8 @@ speed.}
  & DEP-RL & 1.30 & 0.10 & 1.37 & 1.06 & 42 \\
  & \textbf{Residual-Reflex RL} & 1.21 & \textbf{0.01} & 1.34 & 1.11 & 40 \\
 \bottomrule
-\end{tabular}%
-}
-\end{table}
+\end{tabular}
+\end{table*}
 
 \subsubsection{Joint Kinematic Plausibility}
 The human-reference kinematic scores reveal a clear separation between the three controllers. As summarized in Table~\ref{tab:gait_similarity}, Residual-Reflex RL achieved the highest joint-kinematic score at all target walking speeds, with an average score of 88.0\% across the 0.8, 1.0, and 1.2 m/s evaluations. The improvement is most pronounced in the knee and ankle joints, where the proposed controller consistently preserves human-reference joint coordination. In contrast, E2E-RL maintains relatively high hip scores but exhibits less consistent knee and ankle motion, whereas DEP-RL performs consistently worse, particularly at 1.2 m/s. Fig.~\ref{fig:gait_score_bars} summarizes these quantitative comparisons across all target speeds.
@@ -747,7 +745,7 @@ The human-reference kinematic scores reveal a clear separation between the three
 Scores close to zero indicate that the averaged joint trajectory remains outside the human-reference range over most of the gait cycle, rather than exhibiting only localized deviations. This distinction is important because controllers can successfully complete the walking task while still producing joint motions that differ substantially from human gait.
 
 
-\begin{table}[!t]
+\begin{table*}[!t]
 \centering
 \caption{Human-reference kinematic scores in controlled walking validation.
 Scores are computed from normalized hip, knee, and ankle gait-cycle profiles.
@@ -756,7 +754,6 @@ The kinematic average is the mean of the hip, knee, and ankle scores.}
 \small
 \setlength{\tabcolsep}{3.5pt}
 \renewcommand{\arraystretch}{1.12}
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{c l r r r r r}
 \toprule
 \makecell{\textbf{Target}\\\textbf{speed}} & \textbf{Method} & \makecell{\textbf{Realized}\\\textbf{speed}} & \makecell{\textbf{Kinematic}\\\textbf{average}} & \textbf{Hip} & \textbf{Knee} & \textbf{Ankle} \\
@@ -773,9 +770,8 @@ The kinematic average is the mean of the hip, knee, and ankle scores.}
  & DEP-RL & 1.30 & 40.8 & 44.5 & 33.4 & 44.5 \\
  & \textbf{Residual-Reflex RL} & 1.21 & \textbf{92.3} & \textbf{99.6} & \textbf{88.7} & \textbf{88.6} \\
 \bottomrule
-\end{tabular}%
-}
-\end{table}
+\end{tabular}
+\end{table*}
 
 \begin{figure}[!t]
 \centerline{\includegraphics[width=\columnwidth]{gait_score_comparison_bars.png}}
@@ -878,7 +874,7 @@ These quantitative results are consistent with the waveform visualizations, indi
 These results indicate that the proposed controller not only produces a physiologically plausible average gait cycle, but also maintains consistent locomotion over successive steps.
 
 
-\begin{table}[!t]
+\begin{table*}[!t]
 \centering
 \caption{Cycle-level left--right waveform differences and stride variability.
 Hip, knee, ankle, and GRF columns report $D_y$, the RMS difference between the
@@ -889,7 +885,6 @@ more symmetric or more repeatable gait.}
 \small
 \setlength{\tabcolsep}{3.5pt}
 \renewcommand{\arraystretch}{1.12}
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{c l r r r r r r}
 \toprule
 \makecell{\textbf{Target}\\\textbf{speed}} & \textbf{Method} & \textbf{Hip} & \textbf{Knee} & \textbf{Ankle} & \textbf{GRF} & \makecell{\textbf{Time}\\\textbf{CV (\%)}} & \makecell{\textbf{Length}\\\textbf{CV (\%)}} \\
@@ -906,9 +901,8 @@ more symmetric or more repeatable gait.}
  & DEP-RL & 8.33 & 5.83 & 6.31 & 0.34 & 2.29 & 4.78 \\
  & \textbf{Residual-Reflex RL} & \textbf{0.87} & \textbf{0.87} & \textbf{0.46} & \textbf{0.02} & \textbf{0.70} & \textbf{0.74} \\
 \bottomrule
-\end{tabular}%
-}
-\end{table}
+\end{tabular}
+\end{table*}
 
 \begin{figure}[!t]
 \centerline{\includegraphics[width=\columnwidth]{gait_symmetry_variability_bars.png}}
@@ -933,7 +927,8 @@ The accompanying \suppvideo{} further illustrates these differences over continu
 
 
 \begin{figure}[!t]
-\centerline{\includegraphics[width=1\columnwidth]{qualitative_gait_snapshots_1p2_one_cycle.png}}
+\centering
+\includegraphics[width=\columnwidth,height=0.72\textheight,keepaspectratio]{qualitative_gait_snapshots_1p2_one_cycle.png}
 \caption{Qualitative gait snapshots over one detected gait cycle at 1.2~m/s
 for (a) E2E-RL, (b) DEP-RL, and (c) Residual-Reflex RL. Within each panel,
 frames were sampled at 0\%, 25\%, 50\%, 75\%, and 100\% of the gait cycle
